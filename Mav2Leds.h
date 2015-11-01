@@ -20,41 +20,9 @@
 #endif
 /* direct port manupulation instead of digitalwrite. faster and smaller in code */
 #define OutSize 6 /* number of output pins */
-int Out[] = {6,7,8,9,5,4};  /* Output I/O pin array, order FR, RR, RL, FL and potential heartbeat */
+int Out[] = {6,7,8,9,4,5};  /* Output I/O pin array, order FR, RR, RL, FL, gpsled, heartbeat */
 
-
-//#define NAV_EQUATORIAL_RADIUS	(6378.137 * 1000.0)
-//
-//#define LOW_BATT   3.35      /* low battery per cell for HoTT display */
-//#define LOW_BATT_2 3.2       /* low battery per cell for LED warning */
-//#define throttleMin 1100     /* Throttle min position for flighttimer */
-
-///* Bearing calculation, define MAV to Home bearing (view from MAV use in OSD) or Home to MAV bearing (view from Home) */
-//#define BEARING_MAV2HOME
-////#define BEARING_HOME2MAV
-//#define useMavHome           /* Set when using a special message in aq_mavlink to transmitt AQ's home coordinates. */
-
-/* AutoQuad Mavlink status definitions, for other Mavlink flightcontrollers you can 'map' the correct status in this list */
-
-//#define DISARMED 64                        /* MAV_STATE_STANDBY */
-//#define ARMED 192                          /* mavlinkData.mode | MAV_MODE_FLAG_SAFETY_ARMED */
-//#define STABILIZED 16                      /* MAV_MODE_FLAG_STABILIZE_ENABLED */
-//#define ALT_HOLD ARMED + STABILIZED        /* mavlinkData.mode | MAV_MODE_FLAG_STABILIZE_ENABLED */
-//#define POS_HOLD ARMED + STABILIZED + 1    /* mavlinkData.mode | MAV_MODE_FLAG_STABILIZE_ENABLED | MAV_MODE_FLAG_CUSTOM_MODE_ENABLE */
-//#define MANUAL_MODE ARMED                  /* mavlinkData.mode | MAV_MODE_FLAG_SAFETY_ARMED */
-//#define MISION_MODE ARMED + STABILIZED + 4 /* mavlinkData.mode | MAV_MODE_FLAG_STABILIZE_ENABLED | MAV_MODE_FLAG_AUTO_ENABLED */
-//#define DVH_MODE ARMED + STABILIZED + 8    /* mavlinkData.mode | MAV_MODE_FLAG_STABILIZE_ENABLED | MAV_MODE_FLAG_GUIDED_ENABLED */
-//#define CARE_FREE 251           
-
-//#define DISARMED     MAV_MODE_MANUAL_DISARMED
-//#define ARMED        MAV_MODE_MANUAL_ARMED
-//#define MANUAL_MODE  MAV_MODE_MANUAL_ARMED
-//#define ALT_HOLD     MAV_MODE_MANUAL_ARMED + MAV_MODE_FLAG_STABILIZE_ENABLED
-//#define POS_HOLD     MAV_MODE_MANUAL_ARMED + MAV_MODE_FLAG_STABILIZE_ENABLED + MAV_MODE_FLAG_CUSTOM_MODE_ENABLED
-//#define MISSION_MODE MAV_MODE_MANUAL_ARMED + MAV_MODE_FLAG_STABILIZE_ENABLED + MAV_MODE_FLAG_AUTO_ENABLED
-//#define DVH_MODE     MAV_MODE_MANUAL_ARMED + MAV_MODE_FLAG_STABILIZE_ENABLED + MAV_MODE_FLAG_GUIDED_ENABLED
-//#define CARE_FREE    251 /* no definition in common.h yet */
-
+/* Mavlink system status definitions */
 #define MAV_STATE_STANDBY  3   /* System is grounded and on standby. It can be launched any time. | */
 #define	MAV_STATE_ACTIVE   4   /* System is active and might be already airborne. Motors are engaged. | */
 #define	MAV_STATE_CRITICAL 5   /* System is in a non-normal flight mode. It can however still navigate. | */
@@ -68,13 +36,8 @@ int Out[] = {6,7,8,9,5,4};  /* Output I/O pin array, order FR, RR, RL, FL and po
 /* * * * * * * * * * * * * * * * * * * * * */
 
 /* Global variables */
-byte  r, g, b, r2, g2, b2;
+// byte  r, g, b, r2, g2, b2;
 byte ioCounter = 0;          /* Loop counter */
-//static uint32_t p_cMillis = 0;
-//byte variocounter3s = 0;     /* vario m/3s counter */
-//byte variocounter10s = 0;    /* vario m/10s counter */
-//static int counter = 0;      /* General counter */
-//static int stripCounter =0;
 
 /* MAVLink session control */
 static boolean  mavbeat = 0;

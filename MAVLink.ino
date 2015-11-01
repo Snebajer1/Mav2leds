@@ -109,16 +109,16 @@ void read_mavlink(){
 //           #endif
 //          }
 //          break;
-       /* Most messages are just discarded
-       */
-       default:
-       //Do nothing
-#ifdef SERDB
-         {
-           dbSerial.print(".");
-         }
-#endif 
-       break;
+
+        /* Most messages are just discarded */
+        default:
+        //Do nothing
+//        #ifdef SERDB
+//          {
+//            dbSerial.println("...");
+//          }
+//        #endif 
+        break;
       }
     }
     delayMicroseconds(138);
